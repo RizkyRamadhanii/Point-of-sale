@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
@@ -13,12 +14,9 @@ use App\Http\Controllers\ProductController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('shop');
-});
+route::get('/', [OrderController::class, 'index'])->name('order');
 
 route::get('dashboard', [ProductController::class, 'dashboardAdmin'])->name('dashboard');
 route::resource('/admin', ProductController::class);
-
+Route::resource('/order', OrderController::class);
 

@@ -1,4 +1,5 @@
 @extends('admin.layouts.layouts')
+@section('title', 'Dashboard | MakanBang')
 @section('content')
 
 <div class="row">

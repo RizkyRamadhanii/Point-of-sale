@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductsRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.products.index');
+        $data = Product::all();
+        $number = 1;
+        return view('admin.pages.products.index', compact('data', 'number'));
     }
 
     /**
@@ -20,15 +23,18 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.products.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductsRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['foto'] = $request->file('foto')->store('assets/product', 'public');
+        Product::create($data);
+        return redirect()->route('admin.index')->with('success', 'Product berhasil ditambahkan');
     }
 
     /**

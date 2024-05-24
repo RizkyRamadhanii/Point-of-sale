@@ -75,7 +75,7 @@
           <div data-i18n="Analytics">Dashboard</div>
         </a>
       </li>
-      <li class="menu-item {{request()->routeIs('admin.index') ? 'active' : ''}}">
+      <li class="menu-item {{request()->routeIs('admin.*') ? 'active' : ''}}">
         <a href="{{route('admin.index')}}" class="menu-link">
             <i class="menu-icon bi bi-cup-straw"></i>
             <div data-i18n="Analytics">Product</div>

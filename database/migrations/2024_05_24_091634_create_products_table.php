@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('foto');
             $table->integer('harga');
-            $table->enum('status', ['tersedia', 'habis']);
+            $table->enum('status', ['Tersedia', 'Habis']);
             $table->timestamps();
         });
     }
