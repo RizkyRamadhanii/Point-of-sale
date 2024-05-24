@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('invoice');
+            $table->date('tanggal');
             $table->string('nama');
-            $table->json('product_id');
-            $table->integer('total_harga');
+            $table->foreignId('product_id')->constrained('products');
+            $table->integer('jumlah');
+            $table->string('total_harga');
             $table->timestamps();
         });
     }

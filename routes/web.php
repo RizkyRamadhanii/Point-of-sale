@@ -20,3 +20,6 @@ route::get('dashboard', [ProductController::class, 'dashboardAdmin'])->name('das
 route::resource('/admin', ProductController::class);
 Route::resource('/order', OrderController::class);
 
+Route::get('/bill/{invoice}', [OrderController::class, 'bill'])->name('client.bill');
+
+

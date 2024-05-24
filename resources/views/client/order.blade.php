@@ -23,6 +23,15 @@
 		<link href="{{ asset('assets/shop/css/tiny-slider.css') }}" rel="stylesheet">
 		<link href="{{ asset('assets/shop/css/bootstrap.min.css') }}" rel="stylesheet">
 		<link href="{{ asset('assets/shop/css/style.css') }}" rel="stylesheet">
+
+        <style>
+            .btn-xs {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+                line-height: 1.5;
+                border-radius: 0.2rem;
+            }
+        </style>
 		<title>Ujikom - POS</title>
 	</head>
 
@@ -38,27 +47,25 @@
 		</nav>
 		<!-- End Header/Navigation -->
 
-		<div class="untree_co-section product-section before-footer-section">
-		    <div class="container">
-		      	<div class="row">
+
+        <div class="untree_co-section product-section before-footer-section">
+            <div class="container">
+                <div class="row">
                     @foreach ($data as $item)
-                    <div class="col-12 col-md-4 col-lg-3 mb-5"  data-aos="fade-up"
-                    data-aos-duration="500">
-						<a class="product-item" href="#">
-							<img src="{{ asset('storage/'.$item->foto) }}" class="img-fluid product-thumbnail">
-							<h3 class="product-title">{{$item->nama}}</h3>
-							<strong class="product-price">Rp.{{$item->harga}}</strong>
-
-							<span class="icon-cross">
-								<img src="{{ asset('assets/shop/images/cross.svg') }}" class="img-fluid">
-							</span>
-						</a>
-					</div>
+                    <div class="col-12 col-md-4 col-lg-3 mb-5" data-aos="fade-up" data-aos-duration="500">
+                        <a class="product-item" href="#">
+                            <img src="{{ asset('storage/'.$item->foto) }}" class="img-fluid product-thumbnail">
+                            <h3 class="product-title">{{$item->nama}}</h3>
+                            <strong class="product-price" data-price="{{$item->harga}}">Rp.{{$item->harga}}</strong>
+                            <span class="icon-cross">
+                                <img src="{{ asset('assets/shop/images/cross.svg') }}" class="img-fluid add-to-cart" data-id="{{$item->id}}" data-name="{{$item->nama}}" data-price="{{$item->harga}}">
+                            </span>
+                        </a>
+                    </div>
                     @endforeach
-		      	</div>
-		    </div>
-		</div>
-
+                </div>
+            </div>
+        </div>
 
 		<!-- Start Footer Section -->
 		<footer class="footer-section">
@@ -68,63 +75,55 @@
 					<img src="{{asset('assets/shop/images/bowl-3.png')}}" alt="Image" class="img-fluid">
 				</div>
 
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="subscription-form p-4 bg-light rounded">
-                            <h3 class="d-flex align-items-center mb-3">
-                                <span class="me-1">
-                                    <img src="{{asset('assets/shop/images/envelope-outline.svg')}}" alt="Envelope Icon" class="img-fluid" width="24" height="24">
-                                </span>
-                                <span>Pesanan</span>
-                            </h3>
-
-                            <form action="#" class="mb-1">
-                                <div class="mb-3">
-                                    <label for="productName" class="form-label">Product Name</label>
-                                    <input type="text" id="productName" class="form-control" placeholder="Product Name" readonly>
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="subscription-form p-4 bg-light rounded">
+                                <h3 class="d-flex align-items-center mb-3">
+                                    <span class="me-1">
+                                        <img src="{{ asset('assets/shop/images/envelope-outline.svg') }}" alt="Envelope Icon" class="img-fluid" width="24" height="24">
+                                    </span>
+                                    <span>Pesanan</span>
+                                </h3>
+                                <input type="text" id="pemesan" placeholder="Nama Pemesan" class="form-control mb-3">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>Deskripsi</th>
+                                                <th>Harga</th>
+                                                <th>Jumlah</th>
+                                                <th>Total</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="cart-table-body">
+                                            <!-- Data akan ditambahkan di sini -->
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th colspan="4" class="text-right">Total</th>
+                                                <th id="cart-total">Rp. 0</th>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5" class="text-right">
+                                                    <button id="bayar" class="btn btn-primary btn-xs float-end">Bayar</button>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="productPrice" class="form-label">Product Price</label>
-                                    <input type="text" id="productPrice" class="form-control" placeholder="Product Price" readonly>
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">
-                                        <span class="fa fa-paper-plane"></span> Submit
-                                    </button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="subscription-form p-4 bg-light rounded">
-                            <h3 class="d-flex align-items-center mb-3">
-                                <span class="me-1">
-                                    <img src="{{asset('assets/shop/images/envelope-outline.svg')}}" alt="Envelope Icon" class="img-fluid" width="24" height="24">
-                                </span>
-                                <span>Pesanan</span>
-                            </h3>
 
-                            <form action="#" class="mb-1">
-                                <div class="mb-3">
-                                    <label for="productName" class="form-label">Product Name</label>
-                                    <input type="text" id="productName" class="form-control" placeholder="Product Name" readonly>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="productPrice" class="form-label">Product Price</label>
-                                    <input type="text" id="productPrice" class="form-control" placeholder="Product Price" readonly>
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">
-                                        <span class="fa fa-paper-plane"></span> Submit
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                <form id="order-form" action="{{route('order.store')}}" method="POST">
+                    @csrf
+                    <div id="order-inputs">
                     </div>
-                </div>
+                </form>
 
 				<div class="border-top copyright">
 					<div class="row pt-4">
@@ -154,22 +153,161 @@
             AOS.init();
           </script>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const productItems = document.querySelectorAll('.product-item');
-                productItems.forEach(item => {
-                    const crossIcon = item.querySelector('.icon-cross');
-                    crossIcon.addEventListener('click', function(event) {
-                        event.preventDefault();
-                        const productName = item.querySelector('.product-title').textContent;
-                        const productPrice = item.querySelector('.product-price').textContent;
 
-                        document.getElementById('productName').value = productName;
-                        document.getElementById('productPrice').value = productPrice;
-                    });
+    <script>
+ document.addEventListener('DOMContentLoaded', function () {
+    // Inisialisasi array untuk menyimpan produk yang dipilih
+    let selectedProducts = [];
+
+    // Fungsi untuk menampilkan produk yang dipilih di tabel dan form
+    function displaySelectedProduct(product) {
+        // Menambahkan baris baru ke dalam tabel
+        let newRow = document.getElementById('cart-table-body').insertRow();
+        newRow.innerHTML = `
+            <td>${product.nama}</td>
+            <td>Rp.${product.harga}</td>
+            <td><input type="number" class="form-control jumlah" data-id="${product.id}" value="1" min="1"></td>
+            <td>Rp.${product.harga}</td>
+            <td><button type="button" class="btn btn-danger btn-sm remove-product" data-id="${product.id}">Hapus</button></td>
+        `;
+
+        // Menambahkan produk ke dalam array selectedProducts
+        selectedProducts.push({
+            id: product.id,
+            nama: product.nama,
+            harga: product.harga,
+            jumlah: 1 // Default jumlah adalah 1
+        });
+
+        // Menghitung total harga
+        calculateTotal();
+    }
+
+    // Fungsi untuk menghapus produk dari tabel dan array
+    function removeSelectedProduct(productId) {
+        // Menghapus baris dari tabel
+        let rowIndex = selectedProducts.findIndex(product => product.id === productId);
+        document.getElementById('cart-table-body').deleteRow(rowIndex);
+
+        // Menghapus produk dari array selectedProducts
+        selectedProducts.splice(rowIndex, 1);
+
+        // Menghitung ulang total harga
+        calculateTotal();
+    }
+
+    // Fungsi untuk menghitung total harga
+    function calculateTotal() {
+        let total = selectedProducts.reduce((acc, curr) => acc + (curr.harga * curr.jumlah), 0);
+        document.getElementById('cart-total').textContent = `Rp.${total}`;
+    }
+
+    // Event listener untuk menambahkan produk saat tombol "Add to Cart" diklik
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            let productId = this.getAttribute('data-id');
+            let productName = this.getAttribute('data-name');
+            let productPrice = this.getAttribute('data-price');
+
+            // Mengecek apakah produk sudah ada di dalam array selectedProducts
+            if (!selectedProducts.find(product => product.id === productId)) {
+                // Menampilkan produk di tabel dan form
+                displaySelectedProduct({
+                    id: productId,
+                    nama: productName,
+                    harga: productPrice
                 });
-            });
-        </script>
+            } else {
+                alert('Produk sudah ditambahkan ke keranjang.');
+            }
+        });
+    });
+
+    // Event listener untuk menghapus produk saat tombol "Remove" diklik
+    document.getElementById('cart-table-body').addEventListener('click', function (event) {
+        if (event.target.classList.contains('remove-product')) {
+            let productId = event.target.getAttribute('data-id');
+            removeSelectedProduct(productId);
+        }
+    });
+
+    // Event listener untuk mengubah jumlah produk
+    document.getElementById('cart-table-body').addEventListener('input', function (event) {
+        if (event.target.classList.contains('jumlah')) {
+            let productId = event.target.getAttribute('data-id');
+            let productIndex = selectedProducts.findIndex(product => product.id === productId);
+            let newQuantity = parseInt(event.target.value);
+
+            // Memperbarui jumlah produk di dalam array selectedProducts
+            selectedProducts[productIndex].jumlah = newQuantity;
+
+            // Memperbarui total harga
+            let totalPriceCell = event.target.parentNode.nextElementSibling;
+            totalPriceCell.textContent = `Rp.${selectedProducts[productIndex].harga * newQuantity}`;
+
+            calculateTotal();
+        }
+    });
+
+    // Event listener untuk tombol "Bayar"
+    document.getElementById('bayar').addEventListener('click', function (event) {
+        event.preventDefault();
+
+        let pemesan = document.getElementById('pemesan').value;
+
+
+        // Mengecek apakah ada produk yang dipilih
+        if (selectedProducts.length === 0) {
+            alert('Belum ada produk yang dipilih untuk dibayar.');
+            return;
+        }
+
+        // Mengosongkan tabel pembayaran
+        document.getElementById('cart-table-body').innerHTML = '';
+
+        // Menyiapkan form pembayaran
+        let orderForm = document.getElementById('order-form');
+
+            // Menambahkan input untuk pemesan
+    let inputPemesan = document.createElement('input');
+    inputPemesan.type = 'hidden';
+    inputPemesan.name = 'nama';
+    inputPemesan.value = pemesan;
+    orderForm.appendChild(inputPemesan);
+
+        // Menambahkan input untuk setiap produk yang dipilih
+        selectedProducts.forEach((product, index) => {
+            let inputProductId = document.createElement('input');
+            inputProductId.type = 'hidden';
+            inputProductId.name = `product_id[${index}]`;
+            inputProductId.value = product.id;
+            orderForm.appendChild(inputProductId);
+
+            let inputJumlah = document.createElement('input');
+            inputJumlah.type = 'hidden';
+            inputJumlah.name = `jumlah[${index}]`;
+            inputJumlah.value = product.jumlah;
+            orderForm.appendChild(inputJumlah);
+
+            let inputTotalHarga = document.createElement('input');
+            inputTotalHarga.type = 'hidden';
+            inputTotalHarga.name = `total_harga[${index}]`;
+            inputTotalHarga.value = product.harga * product.jumlah;
+            orderForm.appendChild(inputTotalHarga);
+        });
+
+        // Mengirimkan form
+        orderForm.submit();
+
+        // Mengosongkan array selectedProducts
+        selectedProducts = [];
+
+        // Mengosongkan total harga
+        document.getElementById('cart-total').textContent = 'Rp. 0';
+    });
+});
+    </script>
 	</body>
 
 </html>
