@@ -1,5 +1,5 @@
 @extends('admin.layouts.layouts')
-@section('title', 'Produk | MakanBang')
+@section('title', 'Produk | Produk')
 
 @section('content')
 
@@ -32,7 +32,7 @@
         </thead>
         <tbody class="table-border-bottom-0">
             @foreach ($data as $item)
-            
+
             <tr>
                 <td>{{$number++}}</td>
                 <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$item->nama}}</strong></td>

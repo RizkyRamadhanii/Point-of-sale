@@ -75,11 +75,34 @@
           <div data-i18n="Analytics">Dashboard</div>
         </a>
       </li>
-      <li class="menu-item {{request()->routeIs('admin.*') ? 'active' : ''}}">
-        <a href="{{route('admin.index')}}" class="menu-link">
+      <li class="menu-item {{request()->routeIs('obat.*') ? 'active' : ''}}">
+        <a href="{{route('obat.index')}}" class="menu-link">
             <i class="menu-icon bi bi-cup-straw"></i>
-            <div data-i18n="Analytics">Product</div>
+            <div data-i18n="Analytics">Obat</div>
         </a>
+    </li>
+      <li class="menu-item {{request()->routeIs('supplier.*') ? 'active' : ''}}">
+        <a href="{{route('supplier.index')}}" class="menu-link">
+            <i class="menu-icon bi bi-cup-straw"></i>
+            <div data-i18n="Analytics">Supplier</div>
+        </a>
+    </li>
+      <li class="menu-item {{request()->routeIs('pelanggan.*') ? 'active' : ''}}">
+        <a href="{{route('pelanggan.index')}}" class="menu-link">
+            <i class="menu-icon bi bi-cup-straw"></i>
+            <div data-i18n="Analytics">Pelanggan</div>
+        </a>
+    </li>
+
+    <li class="menu-item">
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <a href="{{ route('logout') }}" class="menu-link"
+               onclick="event.preventDefault(); this.closest('form').submit();">
+                <i class="menu-icon tf-icons bx bx-log-out-circle"></i>
+                <div data-i18n="Logout">Logout</div>
+            </a>
+        </form>
     </li>
     </ul>
   </aside>
