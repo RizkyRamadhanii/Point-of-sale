@@ -32,7 +32,7 @@
                 border-radius: 0.2rem;
             }
         </style>
-		<title>Ujikom - POS</title>
+		<title>MakanBang.</title>
 	</head>
 
 	<body>
@@ -53,14 +53,14 @@
                 <div class="row">
                     @foreach ($data as $item)
                     <div class="col-12 col-md-4 col-lg-3 mb-5" data-aos="fade-up" data-aos-duration="500">
-                        <a class="product-item" href="#">
+                        <div class="product-item">
                             <img src="{{ asset('storage/'.$item->foto) }}" class="img-fluid product-thumbnail">
                             <h3 class="product-title">{{$item->nama}}</h3>
                             <strong class="product-price" data-price="{{$item->harga}}">Rp.{{$item->harga}}</strong>
                             <span class="icon-cross">
                                 <img src="{{ asset('assets/shop/images/cross.svg') }}" class="img-fluid add-to-cart" data-id="{{$item->id}}" data-name="{{$item->nama}}" data-price="{{$item->harga}}">
                             </span>
-                        </a>
+                        </div>
                     </div>
                     @endforeach
                 </div>
@@ -155,7 +155,7 @@
 
 
     <script>
- document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
     // Inisialisasi array untuk menyimpan produk yang dipilih
     let selectedProducts = [];
 

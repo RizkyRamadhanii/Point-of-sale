@@ -19,7 +19,7 @@ use App\Http\Controllers\OrderController;
 |
 */
 route::get('/', [OrderController::class, 'index'])->name('order');
-
+Route::resource('/order', OrderController::class);
 
 Route::get('/dashboard', function () {
     return view('admin.pages.dashboard');
@@ -27,9 +27,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
 
-route::get('dashboard', [ProductController::class, 'dashboardAdmin'])->name('dashboard');
 route::resource('/admin', ProductController::class);
-Route::resource('/order', OrderController::class);
 Route::resource('/product', ProductController::class);
 });
 
