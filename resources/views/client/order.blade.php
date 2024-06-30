@@ -41,7 +41,7 @@
 		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
 			<div class="container">
-				<a class="navbar-brand" href="{{route('order')}}">MakanBang<span>.</span></a>
+				<a class="navbar-brand" href="{{route('penjualan.index')}}">MakanBang<span>.</span></a>
 			</div>
 
 		</nav>
@@ -90,7 +90,7 @@
                                     <table class="table table-bordered table-hover">
                                         <thead class="thead-light">
                                             <tr>
-                                                <th>Deskripsi</th>
+                                                <th>Nama</th>
                                                 <th>Harga</th>
                                                 <th>Jumlah</th>
                                                 <th>Total</th>
@@ -119,7 +119,7 @@
                 </div>
 
 
-                <form id="order-form" action="{{route('order.store')}}" method="POST">
+                <form id="order-form" action="{{route('penjualan.store')}}" method="POST">
                     @csrf
                     <div id="order-inputs">
                     </div>
@@ -128,8 +128,7 @@
 				<div class="border-top copyright">
 					<div class="row pt-4">
 						<div class="col-lg-6">
-							<p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a>  Distributed By <a href="https://themewagon.com">ThemeWagon</a> <!-- License information: https://untree.co/license/ -->
-            </p>
+							<p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a>  Distributed By <a href="https://themewagon.com">ThemeWagon</a></p>
 						</div>
 
 						<div class="col-lg-6 text-center text-lg-end">
@@ -152,7 +151,6 @@
         <script>
             AOS.init();
           </script>
-
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -256,7 +254,6 @@
 
         let pemesan = document.getElementById('pemesan').value;
 
-
         // Mengecek apakah ada produk yang dipilih
         if (selectedProducts.length === 0) {
             alert('Belum ada produk yang dipilih untuk dibayar.');
@@ -269,12 +266,12 @@
         // Menyiapkan form pembayaran
         let orderForm = document.getElementById('order-form');
 
-            // Menambahkan input untuk pemesan
-    let inputPemesan = document.createElement('input');
-    inputPemesan.type = 'hidden';
-    inputPemesan.name = 'nama';
-    inputPemesan.value = pemesan;
-    orderForm.appendChild(inputPemesan);
+        // Menambahkan input untuk pemesan
+        let inputPemesan = document.createElement('input');
+        inputPemesan.type = 'hidden';
+        inputPemesan.name = 'nama';
+        inputPemesan.value = pemesan;
+        orderForm.appendChild(inputPemesan);
 
         // Menambahkan input untuk setiap produk yang dipilih
         selectedProducts.forEach((product, index) => {
@@ -292,7 +289,7 @@
 
             let inputTotalHarga = document.createElement('input');
             inputTotalHarga.type = 'hidden';
-            inputTotalHarga.name = `total_harga[${index}]`;
+            inputTotalHarga.name = `total_harga`;
             inputTotalHarga.value = product.harga * product.jumlah;
             orderForm.appendChild(inputTotalHarga);
         });

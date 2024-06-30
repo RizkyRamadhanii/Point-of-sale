@@ -1,7 +1,7 @@
 
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-      <a href="{{route('order')}}" class="app-brand-link">
+      <a href="{{route('penjualan.index')}}" class="app-brand-link">
         <span class="app-brand-logo demo">
           <svg
             width="25"
@@ -78,7 +78,13 @@
         <li class="menu-item {{request()->routeIs('product.*') ? 'active' : ''}}">
             <a href="{{route('product.index')}}" class="menu-link">
                 <i class="menu-icon bi bi-cup-straw"></i>
-                <div data-i18n="Analytics">Product</div>
+                <div data-i18n="Analytics">Produk</div>
+            </a>
+        </li>
+        <li class="menu-item {{request()->routeIs('penjualan.*') ? 'active' : ''}}">
+            <a href="{{route('penjualan.index')}}" class="menu-link">
+                <i class="menu-icon bi bi-cash"></i>
+                <div data-i18n="Analytics">Penjualan</div>
             </a>
         </li>
 

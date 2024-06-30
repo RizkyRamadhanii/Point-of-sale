@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pembelianDetail;
+use App\Models\DetailPenjualan;
 use Illuminate\Http\Request;
 
-class PembelianDetailController extends Controller
+class DetailPenjualanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class PembelianDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(pembelianDetail $pembelianDetail)
+    public function show(DetailPenjualan $detailPenjualan)
     {
         //
     }
@@ -42,7 +42,7 @@ class PembelianDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(pembelianDetail $pembelianDetail)
+    public function edit(DetailPenjualan $detailPenjualan)
     {
         //
     }
@@ -50,7 +50,7 @@ class PembelianDetailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, pembelianDetail $pembelianDetail)
+    public function update(Request $request, DetailPenjualan $detailPenjualan)
     {
         //
     }
@@ -58,7 +58,7 @@ class PembelianDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(pembelianDetail $pembelianDetail)
+    public function destroy(DetailPenjualan $detailPenjualan)
     {
         //
     }

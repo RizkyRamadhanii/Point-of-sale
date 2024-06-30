@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -18,8 +19,8 @@ use App\Http\Controllers\OrderController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-route::get('/', [OrderController::class, 'index'])->name('order');
-Route::resource('/order', OrderController::class);
+route::get('/', [PenjualanController::class, 'index']);
+Route::resource('/penjualan', PenjualanController::class);
 
 Route::get('/dashboard', function () {
     return view('admin.pages.dashboard');
@@ -29,8 +30,9 @@ Route::middleware('auth')->group(function () {
 
 route::resource('/admin', ProductController::class);
 Route::resource('/product', ProductController::class);
+
 });
 
-Route::get('/bill/{invoice}', [OrderController::class, 'bill'])->name('client.bill');
+Route::get('/bill/{invoice}', [PenjualanController::class, 'bill'])->name('client.bill');
 
 require __DIR__.'/auth.php';

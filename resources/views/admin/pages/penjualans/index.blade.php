@@ -1,9 +1,9 @@
 @extends('admin.layouts.layouts')
-@section('title', 'obat | P')
+@section('title', 'Produk | Produk')
 
 @section('content')
 
-<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Supplier /</span> Data Supplier</h4>
+<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Produk /</span> Data Produk</h4>
 
 @if (Session::has('success'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -16,14 +16,14 @@
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
       <h5 class="mb-0">Table Basic</h5>
-      <a href="{{route('supplier.create')}}" class="btn btn-primary btn-sm float-end">Tambah Data</a>
+      <a href="{{route('admin.create')}}" class="btn btn-primary btn-sm float-end">Tambah Data</a>
     </div>
     <div class="table-responsive text-nowrap">
       <table class="table" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th>No</th>
-            <th>Kode</th>
+            <th>Invoice</th>
             <th>Nama</th>
             <th>Actions</th>
           </tr>
@@ -33,16 +33,11 @@
 
             <tr>
                 <td>{{$number++}}</td>
-                <td>{{$item->kode}}</td>
-                <td>{{$item->nama}}</td>
+                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$item->invoice}}</strong></td>
+                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$item->nama}}</strong></td>
                 <td>
-
-                  <a href="{{route('supplier.edit', $item->id)}}" class="btn btn-sm btn-primary">Edit</a>
-                  <form id="deleteForm-{{ $item->id }}" method="POST" action="{{ route('supplier.destroy', ['supplier' => $item]) }}" style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <a href="#" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $item->id }})">Delete</a>
-                </form>
+                  <a href="#" class="btn btn-sm btn-primary">Edit</a>
+                  <a href="#" class="btn btn-sm btn-danger">Delete</a>
                 </td>
               </tr>
             @endforeach
@@ -51,13 +46,5 @@
       </table>
     </div>
   </div>
-
-  <script>
-    function confirmDelete(id) {
-        if (confirm('Are you sure you want to delete this item?')) {
-            document.getElementById('deleteForm-' + id).submit();
-        }
-    }
-    </script>
 
   @endsection
